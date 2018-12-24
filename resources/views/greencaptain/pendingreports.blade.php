@@ -45,7 +45,7 @@
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Manage Reports</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li class=""><a href="{{ url('/greencaptain/reports') }}">All Reports</a></li>
-                    <li><a href="{{ url('/greencaptain/pendingreports') }}">Pending Report</a></li>
+                    <li><a href="">Pending Report</a></li>
                     </ul>
             </li>
               
@@ -103,7 +103,7 @@
                 </nav>
                   <!-- Page Content Holder -->
 
-<h2>All Reports</h2>
+<h2>Pending Reports</h2>
 
             <table class="table table-hover">
                             <thead>
@@ -113,7 +113,6 @@
                                 <th scope="col">Reported At</th>
                                 <th scope="col">City</th>
                                 <th scope="col">Verified Status</th>
-                                <th scope="col">Threat Level</th>
                                 <th scope="col">Job Status</th>
                                 <th scope="col">View</th>
                                 <th scope="col">Delete</th>
@@ -133,24 +132,6 @@
                                 @else
                                 <td><button type="button" class="btn btn-danger">Not Verifiefd</button></td>
                                 @endif
-                                
-
-                                @if($report ->threat_level=='1')              
-                                <td><button type="button" class="btn btn-success">&nbsp &nbsp &nbsp &nbsp Low &nbsp &nbsp &nbsp &nbsp</button></td>
-                                @elseif($report ->threat_level=='2')
-                                <td><button type="button" class="btn btn-success">&nbsp Moderate &nbsp</button></td>
-                                @elseif($report ->threat_level=='3')
-                                <td><button type="button" class="btn btn-warning">&nbspSubstantial</button></td>        
-                                @elseif($report ->threat_level=='4')
-                                <td><button type="button" class="btn btn-warning">&nbsp &nbsp &nbsp Severe &nbsp &nbsp</button></td>      
-                                @elseif($report ->threat_level=='5')
-                                <td><button type="button" class="btn btn-danger">&nbsp &nbsp &nbspCritical &nbsp &nbsp</button></td> 
-                                      
-                                @else
-                                <td><button type="button" class="btn btn-success">Not Defined</button></td>
-                                @endif
-
-
 
                                 @if($report ->status)
                                 <td><button type="button" class="btn btn-success">&nbsp &nbsp Completed &nbsp &nbsp</button></td>                   
@@ -159,11 +140,11 @@
                                 @endif
 
 
-                                <td><button type="button" class="btn btn-warning"><a href="/greencaptain/viewreport/{{$report->id}}"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+                                <td><button type="button" class="btn btn-warning"><a href="/greencaptain/viewpendingreport/{{$report->id}}"><span class="glyphicon glyphicon-eye-open"></span></button></td>
                                 @if($report ->verified)
                                 <td><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok"></button></td>
                                 @else
-                                <td><button type="button" class="btn btn-danger"><a href="/greencaptain/deletereport/{{$report->id}}"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                <td><button type="button" class="btn btn-danger"><a href="/member/deletereport/{{$report->id}}"><span class="glyphicon glyphicon-trash"></span></button></td>
                                 @endif 
                             </tr>
                                 

@@ -46,7 +46,7 @@
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Manage Reports</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li class=""><a href="{{ url('/greencaptain/reports') }}">All Reports</a></li>
-                    <li><a href="{{ url('/greencaptain/pendingreports') }}">Pending Report</a></li>
+                    <li><a href="{{ url('/member/newreport') }}">Pending Report</a></li>
                     </ul>
             </li>
               
@@ -109,59 +109,17 @@
 
 
 
-             <h2>Report Details For Captain</h2>
+             <h2>Pending Report</h2>
+            
+             <div class="form-group">
+                  <label class="col-md-4">Report Posted By</label>
+                     <input class="form-control " type="text" name="title" value="{{$viewreport->posted_by}}" readonly>
+             </div>
 
-
-            <div class="form-group">
-                        <label>Verified Status</label> 
-                        <div class="d-inline-block">
-                        @if($viewreport->verified)
-                                <button type="button" class="btn btn-success">&nbsp &nbsp Verifiefd &nbsp &nbsp</button>
-                                @else
-                                <button type="button" class="btn btn-danger">Not Verifiefd</button>
-                                @endif
-                    </div>
-
-                        <label>Job Status</label> 
-                         <div class="d-inline-block">
-                         
-                         @if($viewreport ->status)
-                                <button type="button" class="btn btn-success">&nbsp &nbsp Completed &nbsp &nbsp</button>                  
-                                @else
-                                <button type="button" class="btn btn-danger">Not Completed</button>
-                                @endif
-
-                        
-                        </div>
-                        <label>Threat Level</label> 
-                        @if($viewreport ->threat_level=='1')              
-                                <td><button type="button" class="btn btn-success">&nbsp &nbsp &nbsp &nbsp Low &nbsp &nbsp &nbsp &nbsp</button></td>
-                                @elseif($viewreport ->threat_level=='2')
-                                <td><button type="button" class="btn btn-success">&nbsp Moderate &nbsp</button></td>
-                                @elseif($viewreport ->threat_level=='3')
-                                <td><button type="button" class="btn btn-warning">&nbspSubstantial</button></td>        
-                                @elseif($viewreport ->threat_level=='4')
-                                <td><button type="button" class="btn btn-warning">&nbsp &nbsp &nbsp Severe &nbsp &nbsp</button></td>      
-                                @elseif($viewreport ->threat_level=='5')
-                                <td><button type="button" class="btn btn-danger">&nbsp &nbsp &nbspCritical &nbsp &nbsp</button></td> 
-                                      
-                                @else
-                                <td><button type="button" class="btn btn-success">Not Defined</button></td>
-                        @endif
-                        
-                    
-            </div>
-
-           
 
              <div class="form-group">
                   <label class="col-md-4">Report Id</label>
                      <input class="form-control " type="text" name="title" value="{{$viewreport->id}}" readonly>
-             </div>
-
-              <div class="form-group">
-                  <label class="col-md-4">Report By</label>
-                     <input class="form-control " type="text" name="title" value="{{$viewreport->posted_by}}" readonly>
              </div>
              
              <div class="form-group">
@@ -218,15 +176,42 @@
 
           
              <br>
-                
+              
+<form method="POST" action="/greencaptain/markasverify/{{$viewreport->id}}" enctype="multipart/form-data">
+             @csrf
              <div class="form-group">
-                 <div class="col-md-12 ">
-                     <a href="/greencaptain/reports"><button type="submit" class="btn btn-danger"  style="width: 100%">
-                        Back to list View
-                     </button></a>
-                 </div>
-             </div>
-             
+                <label for="exampleFormControlSelect1">Assign Threat Level</label>
+                <select class="form-control" id="t_level" name="t_level">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                </select>
+            </div>
+            
+             <br>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-12 ">
+                                        <a href=""><button type="submit" class="btn btn-success"  style="width: 100%">
+                                      Assign Threat Level &  Make This Verify
+                                        </button></a>
+                                    </div>
+                                </div>
+                            <br>
+
+</form>
+        <br>
+                            <div class="form-group">
+                                <div class="col-md-12 ">
+                                    <a href="/greencaptain/pendingreports"><button type="" class="btn btn-danger"  style="width: 100%">
+                                        Back to list View
+                                    </button></a>
+                                </div>
+                            </div>
+                            
          </form>
 
                

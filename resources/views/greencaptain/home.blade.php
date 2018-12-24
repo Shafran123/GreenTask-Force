@@ -25,7 +25,7 @@
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h4>Memeber  Dashboard</h4>
+            <h4>Captain Dashboard</h4>
           
         </div>
         <div class=logo>
@@ -45,7 +45,7 @@
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Manage Reports</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li class=""><a href="{{ url('/greencaptain/reports') }}">All Reports</a></li>
-                    <li><a href="">Pending Report</a></li>
+                    <li><a href="{{ url('/greencaptain/pendingreports') }}">Pending Report</a></li>
                     </ul>
             </li>
               

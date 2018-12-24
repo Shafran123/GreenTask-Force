@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Report;
+use DB;
 
 class ReportController extends Controller
 {
@@ -66,6 +67,48 @@ class ReportController extends Controller
         
         }
 
+
+        public function viewpendingreportcaptain($id){
+
+            $viewreportdata = Report::find($id);   
+             
+        
+          //  dd($viewreport);
+            return view('greencaptain.pendingreportview')->with('viewreport',$viewreportdata);
+        
+        }
+
+        public function markasverify(Request $request,$id){
+     
+            //    dd($request -> all()); 
+        //    $assign_t_level = Report::find($id);
+
+            $assign_t_level = new Report;
+
+            $tlevel=$request->t_level ;
+          
+         
+            $markasverify = Report::find($id);   
+             
+            $markasverify ->verified  = 1   ;
+
+            $markasverify ->threat_level = $tlevel;
+            //  dd($markasverify);
+        
+            $markasverify->save();
+
+          // $assign_t_level->save();
+
+           $pendingreportdata = DB::table('reports')->where('verified', '=', '0')->get();
+           
+          return view('greencaptain/pendingreports')->with('reports',$pendingreportdata);
+          
+           // $staffdata = Staff::all();
+           // dd($markasverify);
+      
+   
+            }
+    
        
 
 
