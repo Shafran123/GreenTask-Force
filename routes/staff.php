@@ -25,3 +25,7 @@ Route::get('/allreports', function () {
     return view('staff.allreports')->with('reports',$staff_report_data);
 })->name('Verified Reports');
 
+Route::get('/view_verified_report/{id}', 'ReportController@view_verified_report') -> name('view one by one for staff ');
+
+Route::post('/marks_as_done/{id}', 'ReportController@mark_as_done') -> name('mark as done by staff');
+

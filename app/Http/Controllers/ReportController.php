@@ -78,6 +78,18 @@ class ReportController extends Controller
         
         }
 
+        public function view_verified_report($id){
+
+            $view_verifed_reportdata = Report::find($id);   
+             
+        
+           // dd($view_verifed_reportdata);
+            return view('staff.viewverifiedreport')->with('viewreport',$view_verifed_reportdata);
+        
+        }
+
+
+
         public function markasverify(Request $request,$id){
      
             //    dd($request -> all()); 
@@ -86,14 +98,17 @@ class ReportController extends Controller
             $assign_t_level = new Report;
 
             $tlevel=$request->t_level ;
+            $verify_by = $request->verified_by;
           
          
             $markasverify = Report::find($id);   
              
             $markasverify ->verified  = 1   ;
 
+            $markasverify ->verified_by =$verify_by;
+
             $markasverify ->threat_level = $tlevel;
-            //  dd($markasverify);
+            // dd($markasverify);
         
             $markasverify->save();
 
@@ -110,7 +125,26 @@ class ReportController extends Controller
             }
     
        
+        public function mark_as_done(Request $request,$id){
 
+
+                $assign_t_level = new Report;
+
+                $completedby= $request->completed_by;
+         
+                $markasdone = Report::find($id);  
+                $markasdone ->status  = 1   ;     
+                $markasdone ->completed_by =$completedby;
+               // dd($completedby);   
+                $markasdone->save();
+    
+                $verifiedreportdata = DB::table('reports')->where('verified', '=', '1')->get();
+       
+               return view('staff/allreports')->with('reports',$verifiedreportdata);
+              
+
+          }
+        
 
         public function delete($id){
 

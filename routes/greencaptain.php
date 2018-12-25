@@ -42,4 +42,4 @@ Route::get('/viewpendingreport/{id}', 'ReportController@viewpendingreportcaptain
 
 Route::post('/markasverify/{id}', 'ReportController@markasverify') -> name('verify report ');
 
-Route::get('/deletereport/{id}', 'ReportController@delete') -> name('Delete Report');
+Route::get('/deletereport/{id}', 'ReportController@delete') -> name('Delete Report'); 

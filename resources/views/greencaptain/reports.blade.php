@@ -129,7 +129,7 @@
                                 
 
                                 @if($report ->verified)
-                                <td><button type="button" class="btn btn-success">&nbsp &nbsp Verifiefd &nbsp &nbsp</button></td>
+                                <td><button type="button" class="btn btn-success" data-toggle="popover" title="Verified By Captain" data-content="{{$report->verified_by}}">&nbsp &nbsp Verifiefd &nbsp &nbsp</button></td>
                                 @else
                                 <td><button type="button" class="btn btn-danger">Not Verifiefd</button></td>
                                 @endif
@@ -153,7 +153,7 @@
 
 
                                 @if($report ->status)
-                                <td><button type="button" class="btn btn-success">&nbsp &nbsp Completed &nbsp &nbsp</button></td>                   
+                                <td><button type="button" class="btn btn-success" data-toggle="popover" title="Completed By Staff" data-content="{{$report->completed_by}}">&nbsp &nbsp Completed &nbsp &nbsp</button></td>                   
                                 @else
                                 <td><button type="button" class="btn btn-danger">Not Completed</button></td>
                                 @endif
@@ -173,6 +173,5 @@
                             </tbody>
                             </table>
                            
-                    
-
+                         
 @endsection
