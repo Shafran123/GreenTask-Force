@@ -36,8 +36,8 @@
             
             <p>Welcome Green Task Force<br>  </p>
            
-           <li class="active">
-           <a href="#" class="active">Home</a>
+           <li>
+           <a href="{{ url('/staff/home') }}" class="">Home</a>
 
            </li>
           
@@ -45,7 +45,7 @@
 
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Manage Reports</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li class=""><a href="{{ url('/staff/allreports') }}">All Verified Reports</a></li>
+                    <li class="active"><a href="">All Verified Reports</a></li>
                     <li><a href="{{ url('/staff/newreport') }}">Not Completed Reports</a></li>
                     <li><a href="{{ url('/staff/newreport') }}">On Going Reports</a></li>
                     </ul>
@@ -104,5 +104,73 @@
                     </div>
                 </nav>
                   <!-- Page Content Holder -->
+
+
+                  <h2>All Reports</h2>
+
+<table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Report Title</th>
+                    <th scope="col">Reported At</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Verified Status</th>
+                    <th scope="col">Threat Level</th>
+                    <th scope="col">Job Status</th>
+                    <th scope="col">View</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($reports as $report)
+                    <tr>
+                    <th scope="row">{{$report->id}}</th>
+                    <td>{{$report->title}}</td>
+                    <td>{{$report->date}}</td>
+                    <td>{{$report->city}}</td>
+                    
+
+                    @if($report ->verified)
+                    <td><button type="button" class="btn btn-success">&nbsp &nbsp Verifiefd &nbsp &nbsp</button></td>
+                    @else
+                    <td><button type="button" class="btn btn-danger">Not Verifiefd</button></td>
+                    @endif
+                    
+
+                    @if($report ->threat_level=='1')              
+                    <td><button type="button" class="btn btn-success">&nbsp &nbsp &nbsp &nbsp Low &nbsp &nbsp &nbsp &nbsp</button></td>
+                    @elseif($report ->threat_level=='2')
+                    <td><button type="button" class="btn btn-success">&nbsp Moderate &nbsp</button></td>
+                    @elseif($report ->threat_level=='3')
+                    <td><button type="button" class="btn btn-warning">&nbspSubstantial</button></td>        
+                    @elseif($report ->threat_level=='4')
+                    <td><button type="button" class="btn btn-warning">&nbsp &nbsp &nbsp Severe &nbsp &nbsp</button></td>      
+                    @elseif($report ->threat_level=='5')
+                    <td><button type="button" class="btn btn-danger">&nbsp &nbsp &nbspCritical &nbsp &nbsp</button></td> 
+                          
+                    @else
+                    <td><button type="button" class="btn btn-success">Not Defined</button></td>
+                    @endif
+
+
+
+                    @if($report ->status)
+                    <td><button type="button" class="btn btn-success">&nbsp &nbsp Completed &nbsp &nbsp</button></td>                   
+                    @else
+                    <td><button type="button" class="btn btn-danger">Not Completed</button></td>
+                    @endif
+
+
+                    <td><button type="button" class="btn btn-warning"><a href="/greencaptain/viewreport/{{$report->id}}"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+                   
+                </tr>
+                    
+
+                    @endforeach
+                    
+                </tbody>
+                </table>
+
 
 @endsection
