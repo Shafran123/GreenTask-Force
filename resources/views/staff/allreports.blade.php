@@ -107,7 +107,9 @@
 
 
                   <h2>All Reports</h2>
-
+               
+                        <div id="map" style="height: 500px; width: 100%;"></div>
+              
 <table class="table table-hover">
                 <thead>
                     <tr>
@@ -123,7 +125,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                 @foreach($reports as $report)
+
+
                     <tr>
                     <th scope="row">{{$report->id}}</th>
                     <td>{{$report->title}}</td>
@@ -161,7 +166,7 @@
                     <td><button type="button" class="btn btn-danger">Not Completed</button></td>
                     @endif
 
-
+ 
                     <td><button type="button" class="btn btn-warning"><a href="/staff/view_verified_report/{{$report->id}}"><span class="glyphicon glyphicon-eye-open"></span></button></td>
                    
                 </tr>
@@ -171,6 +176,65 @@
                     
                 </tbody>
                 </table>
+        
+    <script>
+        var map;
+       
+        function initAutocomplete(){
+            console.log(document.getElementById('map'));
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 6.870066  , lng: 79.879710},
+                zoom: 10
+            });
 
+          
+           
+
+
+      @foreach($reports as $report)
+
+            var content_string{{$report->id}}= '<h3 id="firstHeading" class="firstHeading">{{$report->title}}</h3><h4>Posted By:{{$report->posted_by}}</h4><p>Posted Date:{{$report->date}}<br>Threat Level:{{$report->threat_level}}</p>';
+
+            var infowindow{{$report->id}} = new google.maps.InfoWindow({
+                 content: content_string{{$report->id}}
+            });
+
+            var marker{{$report->id}}= new google.maps.Marker({
+                
+                position: {
+                    
+                    lat:{{$report->latitude}},
+                    lng: {{$report->longitude}}
+                },      
+                map: map,
+              
+                draggable: false
+            });
+            
+            @if($report ->threat_level=='1') 
+            marker{{$report->id}}.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+            @elseif($report ->threat_level=='2') 
+            marker{{$report->id}}.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+            @elseif($report ->threat_level=='3') 
+            marker{{$report->id}}.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
+            @elseif($report ->threat_level=='4')
+            marker{{$report->id}}.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
+            @else
+            marker{{$report->id}}.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+            @endif
+
+            marker{{$report->id}}.addListener('click', function() {
+              infowindow{{$report->id}}.open(map, marker{{$report->id}});
+            });
+
+            @endforeach
+            
+
+        }
+        
+     </script>
+     echo {{$report->latitude}}
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvYuXaCOJAPtjRUtbnYgkoDHiGB9rC1Gs&libraries=places&callback=initAutocomplete"async defer></script>
 
 @endsection
