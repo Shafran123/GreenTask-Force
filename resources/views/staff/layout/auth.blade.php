@@ -22,11 +22,11 @@
 </head>
 <body>
   
-                    <!-- Authentication Links -->
+                    <!-- Authentication Links 
                     @if (Auth::guest())
                         <li><a href="{{ url('/staff/login') }}">Login</a></li>
                         <li><a href="{{ url('/staff/register') }}">Register</a></li>
-                    @else
+                    @else-->
                     <!--    <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
