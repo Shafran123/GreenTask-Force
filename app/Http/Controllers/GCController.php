@@ -13,6 +13,8 @@ class GCController extends Controller
     //    dd($request -> all()); 
 
     $gc = new Greencaptain;
+      
+
     $gc ->name     = $request ->name;
     $gc ->email    = $request ->email;
     $gc ->password = Hash::make($request->tmppassword);

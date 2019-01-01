@@ -189,6 +189,7 @@
 <!-- ADD GTF MEMBER -->
             <h2> Add GTF Captain</h2>
                   <div class="card-body">
+                
                     <form method="POST" action="/admin/reg_new_gcaptain">
                     @csrf
                         <div class="form-group row">

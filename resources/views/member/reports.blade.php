@@ -37,7 +37,7 @@
             <p>Welcome Green Task Force<br>  </p>
            
            <li>
-           <a href="#" class="active">Home</a>
+           <a href="{{ url('/member/home') }}" class="active">Home</a>
 
            </li>
           
@@ -145,55 +145,6 @@
                             </tbody>
                             </table>
                            
-                            <!--
-                
-             
-
-                                <div class="card" style="width: 100%;">
-                                <img class="card-img-top" src="{{asset('storage/postimages/'.$report->image)}}"  style="width: 200px; alt="Card image cap">
-                                <div class="card-body">
-                                    <h3 class="card-title">{{$report->id}} | </h3>
-                                    <h6 class="card-subtitle mb-2 text-muted">Created At : {{$report->created_at}} </h6>
-                                    
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                
-                                    
-                                    <li class="list-group-item">
-                                        <label>Description</label>
-                                         <br>
-                                        {{$report->description}}
-                                    </li>
-
-                                    <li class="list-group-item">
-                                         <label>City</label>
-                                         <br>
-                                        {{$report->city}}</li>
-
-                                    <li class="list-group-item">
-                                         <label>Location</label>
-                                         <br>
-                                         <div id="map" style="height: 500px; width: 100%;"></div></li>
-
-                                    @if($report ->verified)
-                                    <button type="button" class="btn btn-success">Verifiefd</button>
-                                    @else
-                                    <button type="button" class="btn btn-danger"> Not Verifiefd</button>
-                                    @endif
-
-                                    <li class="list-group-item">Status</li>
-
-                                </ul>
-
-                                <div class="card-body">
-                               
-                                <button type="button" id="" class="btn btn-warning">Card link</button>
-                            
-                                </div>
-                                
-                                </div>
-
-<br>
 
 
 
@@ -201,7 +152,6 @@
                    
 
 
--->
                         </div>
 
 

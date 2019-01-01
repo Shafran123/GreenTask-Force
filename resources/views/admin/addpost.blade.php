@@ -120,13 +120,13 @@
                     <p class="req">Fields with * are required<br></p>
 
                     <div class="form-group">
-                         <label class="col-md-4">Post Titile</label>
-                            <input class="form-control " type="text" name="title" value="">
+                         <label class="col-md-4">Post Titile *</label>
+                            <input class="form-control " type="text" name="title" value="" required>
                     </div>
 
                       <div class="form-group">
-                         <label class="col-md-4">Post Content</label>
-                         <textarea rows="10" class="form-control" name="content" placeholder=""></textarea>
+                         <label class="col-md-4">Post Content *</label>
+                         <textarea rows="10" class="form-control" name="content" placeholder="" required></textarea>
                     </div>
 
                     <div class="form-group row mb-0">

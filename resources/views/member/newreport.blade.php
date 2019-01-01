@@ -37,7 +37,7 @@
             <p>Welcome Green Task Force<br>  </p>
            
            <li>
-           <a href="#" class="active">Home</a>
+           <a href="{{ url('/member/home') }}" class="active">Home</a>
 
            </li>
           
@@ -120,36 +120,36 @@
 
              <div class="form-group">
                   <label class="col-md-4">Titile</label>
-                     <input class="form-control " type="text" name="title" value="">
+                     <input class="form-control " type="text" name="title" value="" required>
              </div>
 
 
              <div class="form-group">
                   <label class="col-md-4">Date</label>
-                     <input class="form-control " type="date" name="date" value="">
+                     <input class="form-control " type="date" name="date" value="" required>
              </div>
 
 
             <div class="form-group">
                   <label class="col-md-4">Impact</label>
-                     <input class="form-control " type="text" name="impact" value="">
+                     <input class="form-control " type="text" name="impact" value="" required>
              </div>
 
 
             <div class="form-group">
                   <label class="col-md-4">City</label>
-                     <input class="form-control " type="text" name="city" value="">
+                     <input class="form-control " type="text" name="city" value="" required>
              </div>
            
 
                <div class="form-group">
                   <label class="col-md-4">Description</label>
-                  <textarea rows="10" class="form-control" name="desc" placeholder=""></textarea>
+                  <textarea rows="10" class="form-control" name="desc" placeholder="" required></textarea>
              </div>
 
              <div class="form-group">
                   <label class="col-md-4">Upload Images </label>
-                  <input type="file" class="form-control-file {{ $errors->has('images') ? ' is-invalid' : '' }}" id="images" name="file" accept=".jpg, .png" multiple>
+                  <input type="file" class="form-control-file {{ $errors->has('images') ? ' is-invalid' : '' }}" id="images" name="file" accept=".jpg, .png" multiple required>
              </div>
 
 
