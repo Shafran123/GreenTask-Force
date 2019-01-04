@@ -24,7 +24,7 @@ class ReportController extends Controller
         else{
             return 'no';
         }
-
+ 
         $addreport = new Report;
         $addreport ->posted_by  = $request ->postedby; 
         $addreport ->title      = $request ->title;

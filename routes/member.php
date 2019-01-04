@@ -37,7 +37,7 @@ Route::get('/reports', function () {
     //dd($reportdata);
        // dd($reportdata);
      return view('member.reports')->with('reports',$reportdata);
-})->name('my reports');
+})->name('my reports'); 
 
 
 
